@@ -1,0 +1,129 @@
+\documentclass[
+	12pt,				% tamanho da fonte
+	openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	oneside,
+    %twoside,			% para impressão em verso e anverso. Oposto a oneside
+	a4paper,
+	english,			% idioma adicional para hifenização
+	french,				% idioma adicional para hifenização
+	spanish,			% idioma adicional para hifenização
+	brazil,				% o último idioma é o principal do documento
+	]{abntex2}
+
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{indentfirst}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{microtype}
+
+\usepackage{lipsum}
+
+\usepackage[brazilian,hyperpageref]{backref}
+\usepackage[alf]{abntex2cite}
+
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+\renewcommand{\backref}{}
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 
+		Nenhuma citação no texto.
+	\or
+		Citado na página #2.
+	\else
+		Citado #1 vezes nas páginas #2.
+	\fi}
+ 
+\titulo{Título}
+\autor{
+  Vítor Almeida Subhi 
+  }
+\local{Jataí - GO}
+\data{2023}
+\tipotrabalho{Projeto de Pesquisa (Graduação)}
+
+\preambulo{Contra-capa}
+
+
+\instituicao{
+  Instituto Federal de Goiás - Regional Jataí}
+
+\definecolor{blue}{RGB}{41,5,195}
+
+\makeatletter
+\hypersetup{
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{projeto de pesquisa}, 
+		colorlinks=true,
+    	linkcolor=blue,
+    	citecolor=blue,
+    	filecolor=magenta,
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+
+\setlength{\parindent}{1.3cm}
+
+\setlength{\parskip}{0.2cm}
+
+\makeindex
+
+\begin{document}
+
+\begin{titlingpage}
+    \centering
+    \vfill
+    {\bfseries\Large
+        Bacharelado em Engenharia Elétrica\\
+        \includegraphics[scale=0.50]{ifg2015resumida.jpg}
+        \vskip2cm
+        \imprimirautor\\
+        \vspace{2.5cm}
+        \huge 
+       \imprimirtitulo\\[1cm]
+    }
+    \vfill
+    \vfill
+    \vfill
+    \Large
+    \imprimirlocal\\
+    \imprimirdata
+\end{titlingpage}
+
+\selectlanguage{brazil}
+
+\frenchspacing 
+
+\imprimirfolhaderosto
+
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+
+\textual
+
+\chapter[Introdução]{Introdução}\label{cap:introducao}
+\input{capitulos/1Introducao}
+
+
+\chapter[Referencial Teórico]{Referencial Teórico}\label{cap:referencial}
+\input{capitulos/2Referencial}
+
+\chapter[Metodologia]{Metodologia}\label{cap:metodologia}
+\input{capitulos/3Metodologia}
+
+\include{abntex2-modelo-include-comandos}
+
+\phantompart
+
+\postextual
+
+\bibliography{abntex2-modelo-references}
+
+\phantompart
+
+\end{document}
